@@ -13,9 +13,9 @@ Dart同时支持AOT（Ahead Of Time compiler）与JIT（Just-in-time），开发
   
 ## 内存分配
 创建对象时只需要在现有堆上移动指针，内存增长始终是线形的，省去了查找可用内存段的过程：
-
+![image](https://github.com/viviant1224/Android-Knowledge-System/blob/main/images/flutter/dart1.png)
 Dart的垃圾回收也采用了多生代算法，新生代在回收内存时采用了“半空间”算法，触发垃圾回收时Dart会将当前半空间中的“活跃”对象拷贝到备用空间，然后整体释放当前空间的所有内存：
-
+![image](https://github.com/viviant1224/Android-Knowledge-System/blob/main/images/flutter/dart2.png)
 
 ## 线程模型
 Dart中类似线程的概念叫做Isolate，每个Isolate之间是无法共享内存的，所以这种分配策略可以让Dart实现无锁的快速分配。
