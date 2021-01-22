@@ -12,9 +12,11 @@ Dart同时支持AOT（Ahead Of Time compiler）与JIT（Just-in-time），开发
 * Dart没有public、protected和private这些关键字，使用下划线“_”开头的变量或者函数，表示只在库内可见。参考库和可见性。
   
 ## 内存分配
-创建对象时只需要在现有堆上移动指针，内存增长始终是线形的，省去了查找可用内存段的过程：
+创建对象时只需要在现有堆上移动指针，内存增长始终是线形的，省去了查找可用内存段的过程：  
+
 ![image](https://github.com/viviant1224/Android-Knowledge-System/blob/main/images/flutter/dart1.png)
-Dart的垃圾回收也采用了多生代算法，新生代在回收内存时采用了“半空间”算法，触发垃圾回收时Dart会将当前半空间中的“活跃”对象拷贝到备用空间，然后整体释放当前空间的所有内存：
+Dart的垃圾回收也采用了多生代算法，新生代在回收内存时采用了“半空间”算法，触发垃圾回收时Dart会将当前半空间中的“活跃”对象拷贝到备用空间，然后整体释放当前空间的所有内存：  
+
 ![image](https://github.com/viviant1224/Android-Knowledge-System/blob/main/images/flutter/dart2.png)
 
 ## 线程模型
