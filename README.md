@@ -6,8 +6,11 @@ Android知识体系，包含计算机基础，Java基础，数据结构与算法
 
 
 ## 计算机相关
+[网络](https://github.com/viviant1224/Android-Knowledge-System/blob/main/Blogs/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C.md) 
 
 ## Java
+[JVM](https://github.com/viviant1224/Android-Knowledge-System/blob/main/Blogs/Java/JVM/JVM.md) 
+
 
 ## 数据结构与算法
 
