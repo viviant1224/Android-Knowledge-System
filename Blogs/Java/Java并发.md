@@ -4,7 +4,7 @@
 **线程创建的三种方式**
 * 继承Thread类创建线程类
 * 通过Runnable接口创建线程类
-* 通过Callable和Future创建线程
+* 通过Callable和Future创建线程  
 **创建线程的三种方式的对比**
 采用实现Runnable、Callable接口的方式创见多线程时，优势是：
 线程类只是实现了Runnable接口或Callable接口，还可以继承其他类。
