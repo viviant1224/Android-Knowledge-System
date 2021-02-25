@@ -26,6 +26,9 @@ Android知识体系，包含计算机基础，Java基础，数据结构与算法
 ### Dart
 [Dart语言介绍](https://github.com/viviant1224/Android-Knowledge-System/blob/main/Blogs/Flutter/Dart.md) 
 
+### 底层原理
+[flutter底层原理](https://github.com/viviant1224/Android-Knowledge-System/blob/main/Blogs/Flutter/底层原理.md) 
+
 ## Kotlin
 
 
