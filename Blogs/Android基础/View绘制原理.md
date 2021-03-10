@@ -94,6 +94,31 @@ installDecor
 
 ## ViewRootImpl,WindowManager,WindowManagerService(WMS)之间的关系
 
+DecorView是怎么被添加到系统的Framework层
+
+当Activity准备好后，最终会调用到Activity中的makeVisible，并通过WindowManager添加View,代码如下：
+```
+//Activity 
+ void makeVisible() {
+        if (!mWindowAdded) {
+            ViewManager wm = getWindowManager();
+            wm.addView(mDecor, getWindow().getAttributes());
+            mWindowAdded = true;
+        }
+        mDecor.setVisibility(View.VISIBLE);
+    }
+```
+(下面提到到客户端服务端是Binder通讯中的客户端服务端概念. )  
+
+* ViewRootImpl(客户端):View中持有与WMS链接的mAttachInfo，mAttachInfo持有ViewRootImpl.ViewRootImpl是ViewRoot的的实现,WMS管理窗口时，需要通知客户端进行某种操作，比如事件响应等.ViewRootImpl有个内部类W,W继承IWindow.Stub，实则就是一个Binder，他用于和WMS IPC交互。ViewRootHandler也是其内部类继承Handler，用于与远程IPC回来的数据进行异步调用.
+
+
+* WindowManger(客户端):客户端需要创建一个窗口，而具体创建窗口的任务是由WMS完成,WindowManger就像一个部门经理，谁有什么需求就告诉它，它和WMS交互，客户端不能直接和WMS交互.
+
+
+* WindowManagerService(WMS)(服务端):负责窗口的创建,显示等.
+
+
 ## 屏幕绘制机制
 
 ## 双缓冲技术
