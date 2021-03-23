@@ -130,3 +130,14 @@ DecorView是怎么被添加到系统的Framework层
 ## performMeasure 与measure onMeasure区别
 
 ## layout invalidate 执行后的一些流程区别
+
+View重绘和更新可以使用invalidate()和requestLayout()方法，其主要区别如下：
+
+invalidate()方法只会执行onDraw方法  
+requestLayout()只会执行onMeasure方法和onLayout方法，并不会执行onDraw方法  
+所以当我们进行View更新时，若仅View的显示内容发生改变且新显示内容不影响View的大小、位置，则只需调用invalidate()方法；若View宽高、位置发生改变且显示内容不变，只需调用requestLayout()方法；若两者均发生改变，则需调用两者，按照View的绘制流程，推荐先调用requestLayout()方法再调用invalidate()方法。
+
+与invalidate()方法类似的还有一个postInvalidate()，两者作用都是刷新View，区别在于：
+
+invalidate方法用于UI线程中重新刷新View  
+postInvalidate方法用于非UI线程中重新刷新View，这里借助了ViewRootHandler来达成目的  
