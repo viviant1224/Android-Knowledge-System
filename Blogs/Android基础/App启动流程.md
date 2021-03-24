@@ -5,6 +5,7 @@
 在 system_server 中，启动进程的操作由ActivityManagerService 通过 socket 通信告知 Zygote 进程 fork 子进程（app进程）
 
 ***开启主线程***
+
 app 进程启动后，首先是实例化 ActivityThread，并执行其main()函数：创建 ApplicationThread，Looper，Handler 对象，并开启主线程消息循环Looper.loop()。
 
 ***创建并初始化 Application和Activity***
@@ -16,4 +17,5 @@ ActivityThread的main()调用 ActivityThread#attach(false)方法进行 Binder �
 * mStackSupervisor#attachApplicationLocked()方法中调用 ActivityThread#ApplicationThread#scheduleLaunchActivity()方法，进而通过主线程Handler消息通知创建 Activity 对象，然后再调用 mInstrumentation#callActivityOnCreate()执行 Activity#onCreate() 生命周期
 
 ***布局&绘制***
+
 源码流程可以参考Android View 的绘制流程分析及其源码调用追踪
