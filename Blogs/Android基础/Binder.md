@@ -10,7 +10,7 @@ Binder是进程间通信的具体实现，实现了IBinder接口，在BindServic
 
 进程内 用户空间 & 内核空间 进行交互 需通过 系统调用，主要通过函数： copy_from_user（）：将用户空间的数据拷贝到内核空间 copy_to_user（）：将内核空间的数据拷贝到用户空间
 
-https://user-images.githubusercontent.com/7577770/111307244-217c2d00-8694-11eb-8a76-6d69a9aa0eec.png
+![image](https://user-images.githubusercontent.com/7577770/111307244-217c2d00-8694-11eb-8a76-6d69a9aa0eec.png)
 
 ## 进程隔离 & 跨进程通信（ IPC ）
 进程隔离 为了保证 安全性 & 独立性，一个进程 不能直接操作或者访问另一个进程，即Android的进程是相互独立、隔离的
@@ -18,25 +18,25 @@ https://user-images.githubusercontent.com/7577770/111307244-217c2d00-8694-11eb-8
 跨进程通信（ IPC ） 即进程间需进行数据交互、通信
 
 ## 跨进程通信的基本原理 
-https://user-images.githubusercontent.com/7577770/111307366-4a042700-8694-11eb-835c-c226467d15fe.png
+![image](https://user-images.githubusercontent.com/7577770/111307366-4a042700-8694-11eb-835c-c226467d15fe.png)
 
 a. 而Binder的作用则是：连接 两个进程，实现了mmap()系统调用，主要负责 创建数据接收的缓存空间 & 管理数据接收缓存 b. 注：传统的跨进程通信需拷贝数据2次，但Binder机制只需1次，主要是使用到了内存映射
 
 ## Binder 跨进程通信机制 模型
 模型原理图：
-https://user-images.githubusercontent.com/7577770/111308808-1b874b80-8696-11eb-8feb-78c190731149.png
+![image](https://user-images.githubusercontent.com/7577770/111308808-1b874b80-8696-11eb-8feb-78c190731149.png)
 ## 模型组成角色说明：
-https://user-images.githubusercontent.com/7577770/111308871-2c37c180-8696-11eb-9819-f473206dd659.png
+![image](https://user-images.githubusercontent.com/7577770/111308871-2c37c180-8696-11eb-9819-f473206dd659.png)
 
 ## Binder驱动的作用 & 原理：
 
-https://user-images.githubusercontent.com/7577770/111308944-44a7dc00-8696-11eb-9a9f-1709c54bf58f.png
+![image](https://user-images.githubusercontent.com/7577770/111308944-44a7dc00-8696-11eb-9a9f-1709c54bf58f.png)
 
 ## 跨进程通信的核心原理：
-https://user-images.githubusercontent.com/7577770/111309278-acf6bd80-8696-11eb-8534-00fcc8751fbc.png
+![image](https://user-images.githubusercontent.com/7577770/111309278-acf6bd80-8696-11eb-8534-00fcc8751fbc.png)
 
 模型原理步骤说明：
-https://user-images.githubusercontent.com/7577770/111309458-e6c7c400-8696-11eb-9bba-3686e2cd0708.png
+![image](https://user-images.githubusercontent.com/7577770/111309458-e6c7c400-8696-11eb-9bba-3686e2cd0708.png)
 
 
 说明1：Client进程、Server进程 & Service Manager 进程之间的交互 都必须通过Binder驱动（使用 open 和 ioctl文件操作函数），而非直接交互
